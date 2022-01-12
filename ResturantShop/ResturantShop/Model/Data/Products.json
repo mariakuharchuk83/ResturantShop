@@ -1,0 +1,153 @@
+[
+    {
+        "id": 1,
+        "category": "pizza",
+        "name": "Prosciutto",
+        "ingredients": "Tomato base, mozzarella, shinka, cherry tomatoes, Pesto sauce",
+        "calories": 230,
+        "price": 8.30,
+        "rate": 4.7,
+        "time": "15-20"
+    },
+    {
+        "id": 2,
+        "category": "pizza",
+        "name": "Peperoni",
+        "ingredients": "Tomato base, mozzarella, pepperoni salami",
+        "calories": 200,
+        "price": 7.00,
+        "rate": 4.8,
+        "time": "15-25"
+    },
+    {
+       "id": 3,
+        "category": "pizza",
+        "name": "Four Cheese",
+        "ingredients": "Vershkova base, mozzarella, parmesan, gorgonzola, ricotta cheese 4",
+        "calories": 245,
+        "price": 8.90,
+        "rate": 4.5,
+        "time": "20-30"
+    },
+    {
+       "id": 4,
+        "category": "burger",
+        "name": "Steak Burger",
+        "ingredients": "Brioche bun, Steak Mignon, Barbecue sauce, Red onion, Cheddar cheese, Tomatoes, Pickled cucumber, Arugula, Mayonnaise",
+        "calories": 400,
+        "price": 13.50,
+        "rate": 4.5,
+        "time": "20-30"
+    },
+    {
+        "id": 5,
+        "category": "burger",
+        "name": "Shrimp Burger",
+        "ingredients": "Brioche Bun, Citrus Sauce, Red Onion, Salted Cucumber, Shrimp, Cheddar Cheese, Mayonnaise, Tomatoes, Arugula, Lolo Biondo Salad",
+        "calories": 375,
+        "price": 16.00,
+        "rate": 4.3,
+        "time": "20-30"
+        
+    },
+    {
+        "id": 6,
+        "category": "burger",
+        "name": "Cherry Burger",
+        "ingredients": "Bun black, Beef cutlets 2 pcs. , Barbecue sauce, Red onion, Cheddar cheese, Tomatoes, Pickled cucumber, Iceberg, Cherry jam, Pastrami",
+        "calories": 435,
+        "price": 14.80,
+        "rate": 4.8,
+        "time": "25-35"
+    },
+    {
+        "id": 7,
+       "category": "sandwich",
+        "name": "Smoked Chicken Sandwich",
+        "ingredients": "toast bread, smoked chicken breast, fresh. tomato, cheese, pickled cucumber, lettuce",
+        "calories": 250,
+        "price": 6.40,
+        "rate": 3.8,
+        "time": "2-5"
+    },
+    {
+        "id": 8,
+        "category": "sandwich",
+        "name": "Pork Sandwich",
+        "ingredients": "baked pork, cabbage, Mexican sauce, bakery product",
+        "calories": 240,
+        "price": 7.20,
+        "rate": 4.0,
+        "time": "2-3"
+    },
+    {
+        "id": 9,
+        "category": "sandwich",
+        "name": "Sausages Grill Sharp Sandwich",
+        "ingredients": "Grilled sausages, cabbage, Korean carrots, spices, mayonnaise, tomato sauce, bakery product",
+        "calories": 300,
+        "price": 7.70,
+        "rate": 3.2,
+        "time": "5-8"
+    },
+    {
+        "id": 10,
+        "category": "pasta",
+        "name": "Lasagne Bolognese",
+        "ingredients": "pasta of own production, Bolognese sauce, mozzarella, pine nuts, Grana Padana cheese",
+        "calories": 260,
+        "price": 10.00,
+        "rate": 4.9,
+        "time": "20-30"
+    },
+    {
+        "id": 11,
+        "category": "pasta",
+        "name": "Fettuccine Carbonara",
+        "ingredients": "Fettuccine, Carbonara sauce, bacon, Grana Padano cheese",
+        "calories": 270,
+        "price": 9.30,
+        "rate": 4.6,
+        "time": "15-20"
+    },
+    {
+        "id": 12,
+        "category": "pasta",
+        "name": "Creamy Pasta with Smoked Salmon",
+        "ingredients": "Fetuccini, pasta, hot smoked pink salmon, cherry tomatoes, arugula, parmesan cheese",
+        "calories": 250,
+        "price": 12.60,
+        "rate": 4.7,
+        "time": "25-35"
+    },
+    {
+        "id": 13,
+        "category": "drink",
+        "name": "Pepsi",
+        "ingredients": "carbonated soft drink",
+        "calories": 100,
+        "price": 1.60,
+        "rate": 5,
+        "time": "5"
+    },
+    {
+        "id": 14,
+        "category": "drink",
+        "name": "Morshynska",
+        "ingredients": "still water",
+        "calories": 20,
+        "price": 1.00,
+        "rate": 5,
+        "time": "5"
+    },
+    {
+        "id": 15,
+        "category": "drink",
+        "name": "Rosemary Lemonade",
+        "ingredients": "sugar syrup with rosemary, lemon juice, mineral water, ice",
+        "calories": 70,
+        "price": 2.40,
+        "rate": 4.9,
+        "time": "5"
+    }
+]
