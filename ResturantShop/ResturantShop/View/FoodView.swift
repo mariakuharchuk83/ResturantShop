@@ -10,23 +10,14 @@ import SwiftUI
 struct FoodView: View {
     let product: Product
     @State var amount: Int = 1
+    
+    
     var body: some View {
         ZStack {
             ScrollView{
                 VStack{
                     HStack{
-                        Button(action: {}){
-                        Image(systemName: "chevron.left")
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                            .font(Font.title.weight(.bold))
-                            .foregroundColor(Color.init(hex: "34835e"))
-                            .padding()
-                            .background(.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
-                            .padding(.leading)
-                        }
+                        NavigateBackView()
                         Spacer()
                         Button(action: {}){
                         Image(systemName: "cart.fill")
@@ -50,7 +41,6 @@ struct FoodView: View {
                     Image("\(product.category)-\(product.name)")
                         .resizable()
                         .frame(minWidth: 200, maxWidth: 300, minHeight: 200, maxHeight: 300)
-                        .clipShape(Circle())
                         .shadow(radius: 2)
                         
                     HStack{
@@ -86,11 +76,11 @@ struct FoodView: View {
                         Spacer()
                         
                         Button(action:{
-                            if amount > 0 {
+                            if amount > 1 {
                             amount -= 1
                             }
                             else{
-                                amount = 0
+                                amount = 1
                             }
                         }){
                             Image(systemName: "minus")
@@ -158,11 +148,13 @@ struct FoodView: View {
         }
         .ignoresSafeArea()
     .background(Color.init(hex: "f7f7f7"))
+    .navigationBarBackButtonHidden(true)
+                
     }
 }
 
 struct FoodView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodView(product: Products().primary )
+        FoodView( product: Products().primary )
     }
 }

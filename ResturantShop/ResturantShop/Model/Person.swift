@@ -22,7 +22,3 @@ struct FoodCardModel {
     
 }
 
-struct SelectedView{
-    var selection: String?
-    var selectedProduct: Product? 
-}

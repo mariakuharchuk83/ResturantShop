@@ -11,27 +11,27 @@ struct ContentView: View {
     let info = Products()
     private let person = Person()
     private let foodCard: [FoodCardModel] = [FoodCardModel(cardImage: "pizza", cardText: "Pizza", id: 0), FoodCardModel(cardImage: "burger", cardText: "Burger", id: 1), FoodCardModel(cardImage: "sandwich", cardText: "Sandwich", id: 2), FoodCardModel(cardImage: "pasta", cardText: "Pasta", id: 3), FoodCardModel(cardImage: "drink", cardText: "Drink", id: 4)]
+    
     @State var selectedBtn: Int = 0
     @State private var foodName: String = ""
-    @State var selection: String? = nil
-    @State var selectedView = SelectedView(selection: nil, selectedProduct: nil)
+    @State var selectedProducts: [Product] =  Products().getByCategory(selectedCategory: "pizza")
     var body: some View {
-        //NavigationView {
+        NavigationView {
             ZStack{
                 ScrollView(showsIndicators: false){
                     VStack{
-//                        NavigationLink(destination: FoodView(product: info.products[1]), tag: "FoodView", selection: $selectedView.selection){}
                         HStack{
                             Text("\(person.firstName) \(person.lastName)")
                                 .font(Font.custom("HelveticaNeue-Bold", size: 25))
                                 .padding(.leading)
                             Spacer()
-                            Button(action:{}) {
-                            Image("\(person.image)")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .cornerRadius(10)
-                                .padding(.trailing)
+                            
+                            NavigationLink(destination: Text("personView")){
+                                Image("\(person.image)")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(10)
+                                    .padding(.trailing)
                             }
                         }
                         
@@ -60,19 +60,20 @@ struct ContentView: View {
                             .cornerRadius(20)
                             .shadow(radius: 3)
                             
-                            HStack{
-                                Button(action:{}) {
+                            NavigationLink(destination: Text("settings")){
+                                HStack{
+                                    
                                     Image(systemName: "slider.horizontal.3")
                                         .resizable()
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(Color.black)
+                                    
                                 }
+                                .padding()
+                                .background(Color.init(hex: "ffde83"))
+                                .cornerRadius(10)
+                                .shadow(radius: 3)
                             }
-                            .padding()
-                            .background(Color.init(hex: "ffde83"))
-                            .cornerRadius(10)
-                            .shadow(radius: 3)
-                            
                         }
                         .padding(.horizontal)
                         
@@ -89,6 +90,7 @@ struct ContentView: View {
                                 ForEach(0 ..< 5) { i in
                                     Button(action: {
                                         self.selectedBtn = i
+                                        self.selectedProducts = self.info.getByCategory(selectedCategory: self.foodCard[self.selectedBtn].cardImage)
                                     }){
                                         Image(foodCard[i].cardImage)
                                             .resizable()
@@ -112,19 +114,57 @@ struct ContentView: View {
                         }
                     
                         HStack{
-                            Text("Popular")
+                            Text("Products")
                                 .font(Font.custom("HelveticaNeue-Bold", size: 22))
                                 .padding(.leading)
                             Spacer()
-                            Text("See all")
+                            Text("The best quality")
                                 .font(Font.custom("HelveticaNeue", size: 20))
                                 .foregroundColor(Color.gray)
                                 .padding(.trailing)
                         }
                         
                         
-                        FoodCardView(selectedProducts: info.getByCategory(selectedCategory: foodCard[selectedBtn].cardImage ))
-                        
+                        ForEach(0 ..< selectedProducts.count) { i in
+                            NavigationLink(destination: FoodView(product: selectedProducts[i])){
+                            HStack{
+                                VStack(alignment: .leading){
+                                    Text("\(selectedProducts[i].name)")
+                                        .font(Font.custom("HelveticaNeue-Bold", size: 19))
+                                        .foregroundColor(.black)
+                                    
+                                    Text("\(selectedProducts[i].ingredients)")
+                                        .font(Font.custom("HelveticaNeue", size: 16))
+                                        .foregroundColor(Color.gray)
+                                    
+                                    HStack{
+                                        Image("fire-emoji")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                        Text("\(selectedProducts[i].calories) calories")
+                                            .font(Font.custom("HelveticaNeue", size: 16))
+                                            .foregroundColor(Color.yellow)
+                                    }
+                                    
+                                    Text("\(String(format: "%.2f", selectedProducts[i].price))$")
+                                        .font(Font.custom("HelveticaNeue-Bold", size: 23))
+                                        .foregroundColor(.black)
+                                }
+                                .padding()
+                                
+                                Image("\(selectedProducts[i].category)-\(selectedProducts[i].name)")
+                                    .resizable()
+                                    .frame(width: 170, height: 170)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 3)
+                            }
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .padding()
+                        .shadow(radius: 3)
+                            }
+                        }
                     }
                     
                     HStack{
@@ -132,11 +172,11 @@ struct ContentView: View {
                     }
                     
                 }
-                .padding(.top,28)
+                .padding(.top,43)
                 .ignoresSafeArea()
                 .background(Color.init(hex: "f7f7f7"))
             }
-       // }
+        }
         
     }
 }
@@ -146,57 +186,57 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-struct FoodCardView: View {
-    let selectedProducts: [Product]
-    var amount: Int {
-      return selectedProducts.count
-    }
-    @State var selectedView = SelectedView(selection: nil, selectedProduct: nil)
-    var body: some View {
-        
-        ForEach(0 ..< amount) { i in
-            Button(action:{
-                selectedView.selection = "FoodView"
-                selectedView.selectedProduct = selectedProducts[i]
-            }){
-            HStack{
-                VStack(alignment: .leading){
-                    Text("\(selectedProducts[i].name)")
-                        .font(Font.custom("HelveticaNeue-Bold", size: 19))
-                        .foregroundColor(.black)
-                    
-                    Text("\(selectedProducts[i].ingredients)")
-                        .font(Font.custom("HelveticaNeue", size: 16))
-                        .foregroundColor(Color.gray)
-                    
-                    HStack{
-                        Image("fire-emoji")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("\(selectedProducts[i].calories) calories")
-                            .font(Font.custom("HelveticaNeue", size: 16))
-                            .foregroundColor(Color.yellow)
-                    }
-                    
-                    Text("\(String(format: "%.2f", selectedProducts[i].price))$")
-                        .font(Font.custom("HelveticaNeue-Bold", size: 23))
-                        .foregroundColor(.black)
-                }
-                .padding()
-                
-                Image("\(selectedProducts[i].category)-\(selectedProducts[i].name)")
-                    .resizable()
-                    .frame(width: 170, height: 170)
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(10)
-            .padding()
-        .shadow(radius: 3)
-            }
-        }
-    }
-}
+//
+//struct FoodCardView: View {
+//    let selectedProducts: [Product]
+//    var amount: Int {
+//      return selectedProducts.count
+//    }
+//    //@State var selectedView = SelectedView(selection: nil, selectedProduct: nil)
+//    var body: some View {
+//
+//        ForEach(0 ..< amount) { i in
+//            Button(action:{
+//                SelectedView.currentSelection.selection = "FoodView"
+//                SelectedView.currentSelection.selectedProduct = selectedProducts[i]
+//            }){
+//            HStack{
+//                VStack(alignment: .leading){
+//                    Text("\(selectedProducts[i].name)")
+//                        .font(Font.custom("HelveticaNeue-Bold", size: 19))
+//                        .foregroundColor(.black)
+//
+//                    Text("\(selectedProducts[i].ingredients)")
+//                        .font(Font.custom("HelveticaNeue", size: 16))
+//                        .foregroundColor(Color.gray)
+//
+//                    HStack{
+//                        Image("fire-emoji")
+//                            .resizable()
+//                            .frame(width: 20, height: 20)
+//                        Text("\(selectedProducts[i].calories) calories")
+//                            .font(Font.custom("HelveticaNeue", size: 16))
+//                            .foregroundColor(Color.yellow)
+//                    }
+//
+//                    Text("\(String(format: "%.2f", selectedProducts[i].price))$")
+//                        .font(Font.custom("HelveticaNeue-Bold", size: 23))
+//                        .foregroundColor(.black)
+//                }
+//                .padding()
+//
+//                Image("\(selectedProducts[i].category)-\(selectedProducts[i].name)")
+//                    .resizable()
+//                    .frame(width: 170, height: 170)
+//                    .clipShape(Circle())
+//                    .shadow(radius: 3)
+//            }
+//            .padding()
+//            .background(Color.white)
+//            .cornerRadius(10)
+//            .padding()
+//        .shadow(radius: 3)
+//            }
+//        }
+//    }
+//}
