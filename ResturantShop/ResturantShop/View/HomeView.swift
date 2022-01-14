@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     let info = Products()
     private let person = Person()
     private let foodCard: [FoodCardModel] = [FoodCardModel(cardImage: "pizza", cardText: "Pizza", id: 0), FoodCardModel(cardImage: "burger", cardText: "Burger", id: 1), FoodCardModel(cardImage: "sandwich", cardText: "Sandwich", id: 2), FoodCardModel(cardImage: "pasta", cardText: "Pasta", id: 3), FoodCardModel(cardImage: "drink", cardText: "Drink", id: 4)]
@@ -183,60 +183,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }
-//
-//struct FoodCardView: View {
-//    let selectedProducts: [Product]
-//    var amount: Int {
-//      return selectedProducts.count
-//    }
-//    //@State var selectedView = SelectedView(selection: nil, selectedProduct: nil)
-//    var body: some View {
-//
-//        ForEach(0 ..< amount) { i in
-//            Button(action:{
-//                SelectedView.currentSelection.selection = "FoodView"
-//                SelectedView.currentSelection.selectedProduct = selectedProducts[i]
-//            }){
-//            HStack{
-//                VStack(alignment: .leading){
-//                    Text("\(selectedProducts[i].name)")
-//                        .font(Font.custom("HelveticaNeue-Bold", size: 19))
-//                        .foregroundColor(.black)
-//
-//                    Text("\(selectedProducts[i].ingredients)")
-//                        .font(Font.custom("HelveticaNeue", size: 16))
-//                        .foregroundColor(Color.gray)
-//
-//                    HStack{
-//                        Image("fire-emoji")
-//                            .resizable()
-//                            .frame(width: 20, height: 20)
-//                        Text("\(selectedProducts[i].calories) calories")
-//                            .font(Font.custom("HelveticaNeue", size: 16))
-//                            .foregroundColor(Color.yellow)
-//                    }
-//
-//                    Text("\(String(format: "%.2f", selectedProducts[i].price))$")
-//                        .font(Font.custom("HelveticaNeue-Bold", size: 23))
-//                        .foregroundColor(.black)
-//                }
-//                .padding()
-//
-//                Image("\(selectedProducts[i].category)-\(selectedProducts[i].name)")
-//                    .resizable()
-//                    .frame(width: 170, height: 170)
-//                    .clipShape(Circle())
-//                    .shadow(radius: 3)
-//            }
-//            .padding()
-//            .background(Color.white)
-//            .cornerRadius(10)
-//            .padding()
-//        .shadow(radius: 3)
-//            }
-//        }
-//    }
-//}
